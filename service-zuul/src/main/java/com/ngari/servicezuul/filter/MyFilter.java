@@ -12,21 +12,40 @@ import javax.servlet.http.HttpServletRequest;
 public class MyFilter extends ZuulFilter {
 
     private static Logger log = LoggerFactory.getLogger(MyFilter.class);
+
+    /**
+     * 过滤类型
+     * pre：路由之前
+     * routing：路由之时
+     * post： 路由之后
+     * error：发送错误调用
+     * @return
+     */
     @Override
     public String filterType() {
         return "pre";
     }
 
+    /**
+     * 过滤顺序
+     * */
     @Override
     public int filterOrder() {
         return 0;
     }
 
+    /**
+     * 是否过滤
+     * */
     @Override
     public boolean shouldFilter() {
         return true;
     }
 
+    /**
+     * 过滤器的具体逻辑
+     * @return
+     */
     @Override
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
